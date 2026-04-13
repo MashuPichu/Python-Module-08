@@ -6,7 +6,7 @@
 #  By: klucchin <klucchin@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/04/11 12:43:22 by klucchin        #+#    #+#               #
-#  Updated: 2026/04/11 13:38:52 by klucchin        ###   ########.fr        #
+#  Updated: 2026/04/13 13:38:03 by klucchin        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -46,7 +46,8 @@ def main():
         venv_name = get_venv_name()
         env_path = sys.prefix
 
-        python_version = f"python{sys.version_info.major}.{sys.version_info.minor}"
+        python_version = f"python{sys.version_info.major}."
+        f"{sys.version_info.minor}"
         site_packages = os.path.join(
             env_path, "lib", python_version, "site-packages")
 
