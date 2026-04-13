@@ -6,15 +6,16 @@
 #  By: klucchin <klucchin@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/04/13 12:44:25 by klucchin        #+#    #+#               #
-#  Updated: 2026/04/13 13:35:47 by klucchin        ###   ########.fr        #
+#  Updated: 2026/04/13 14:29:34 by klucchin        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
 import os
+from typing import Any
 from dotenv import load_dotenv
 
 
-def load_configuration():
+def load_configuration() -> dict[str, Any]:
     load_dotenv()
 
     config = {
@@ -28,7 +29,7 @@ def load_configuration():
     return config
 
 
-def validate_config(config):
+def validate_config(config: dict[str, Any]) -> bool:
     missing = [key for key, value in config.items() if not value]
 
     if missing:
@@ -40,7 +41,7 @@ def validate_config(config):
     return len(missing) == 0
 
 
-def display_status(config):
+def display_status(config: dict[str, Any]) -> None:
     print("ORACLE STATUS: Reading the Matrix...\n")
     print("Configuration loaded:")
 
@@ -91,7 +92,7 @@ def display_status(config):
     print("\nThe Oracle sees all configurations.")
 
 
-def main():
+def main() -> None:
     config = load_configuration()
     validate_config(config)
     display_status(config)

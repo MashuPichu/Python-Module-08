@@ -6,18 +6,19 @@
 #  By: klucchin <klucchin@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/04/11 13:41:03 by klucchin        #+#    #+#               #
-#  Updated: 2026/04/11 15:07:51 by klucchin        ###   ########.fr        #
+#  Updated: 2026/04/13 14:30:46 by klucchin        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
 import importlib
 import sys
+from typing import Any
 
 
 REQUIRED_PACKAGES = ["pandas", "numpy", "matplotlib"]
 
 
-def check_dependencies():
+def check_dependencies() -> tuple[dict[str, Any], list[str]]:
     print("LOADING STATUS: Loading programs...")
     print("Checking dependencies:")
 
@@ -37,7 +38,7 @@ def check_dependencies():
     return installed, missing
 
 
-def show_install_instructions(missing):
+def show_install_instructions(missing: list[str]) -> None:
     print("\nMissing dependencies detected!\n")
 
     print("Install with pip:")
@@ -53,19 +54,19 @@ def show_install_instructions(missing):
     print("python loading.py")
 
 
-def generate_data(np):
+def generate_data(np: Any) -> Any:
     print("\nAnalyzing Matrix data...")
 
     data = np.random.normal(loc=50, scale=15, size=1000)
     return data
 
 
-def analyze_data(pd, np, data):
+def analyze_data(pd: Any, np: Any, data: Any) -> Any:
     print(f"Processing {len(data)} data points...")
     return pd.DataFrame({"signal_strength": data})
 
 
-def visualize(matplotlib, df):
+def visualize(matplotlib: Any, df: Any) -> None:
     print("Generating visualization...")
 
     plt = matplotlib.pyplot
@@ -79,7 +80,7 @@ def visualize(matplotlib, df):
     plt.savefig("matrix_analysis.png")
 
 
-def main():
+def main() -> None:
     installed, missing = check_dependencies()
 
     if missing:

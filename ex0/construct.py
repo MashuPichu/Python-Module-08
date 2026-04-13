@@ -6,7 +6,7 @@
 #  By: klucchin <klucchin@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/04/11 12:43:22 by klucchin        #+#    #+#               #
-#  Updated: 2026/04/13 13:38:03 by klucchin        ###   ########.fr        #
+#  Updated: 2026/04/13 14:24:10 by klucchin        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -14,17 +14,17 @@ import sys
 import os
 
 
-def is_virtual_env():
+def is_virtual_env() -> bool:
     return (
         hasattr(sys, 'base_prefix') and sys.prefix != sys.base_prefix
     ) or hasattr(sys, 'real_prefix')
 
 
-def get_venv_name():
+def get_venv_name() -> str:
     return os.path.basename(sys.prefix)
 
 
-def main():
+def main() -> None:
     in_venv = is_virtual_env()
 
     python_path = sys.executable
